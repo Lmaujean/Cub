@@ -89,6 +89,7 @@ struct s_map
 	float		*x_v;
 	int			arr_length;
 	int			arr_length_v;
+	float		save_crash;
 };
 
 
@@ -178,5 +179,7 @@ void			ft_player(t_map *game, int i, int j);
 int				empty(char *str);
 void			init_raycast(t_map *game);
 void			print_doublechar(char **tab);
+int				check_last_line_nul(t_map *map);
+int				ft_first_line_of_map(char *str);
 
 #endif

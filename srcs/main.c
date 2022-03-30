@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 	map.p_x = (map.p_x_grid * 64) + 32;
 	map.p_y = (map.p_y_grid * 64) + 32;
 	cast_img(map);
-	ft_free_game(&map);
-	free_split(map.total_map);
+	// ft_free_game(&map);
+	// free_split(map.total_map);
 	return (0);
 }

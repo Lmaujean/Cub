@@ -25,58 +25,57 @@ void	keycode_esc(t_map *map)
 
 void	keycode_up(t_map *map, int old_p_y)
 {
-        if (map->total_map[map->p_y_grid - 1][map->p_x_grid] == '0')
-        {
+	if (map->total_map[(map->p_y - 11) / 64][map->p_x / 64] != '1')
+	{
                 old_p_y = map->p_y / 64;
-				if ((map->p_y - 11) / 64 >= 0)
-					map->p_y -= 11;
+				map->p_y -= 11;
                 map->total_map[old_p_y][map->p_x / 64] = '0';
-                map->total_map[map->p_y / 64][map->p_x / 64] = 'P';
+                map->total_map[map->p_y / 64][map->p_x / 64] = 'M';
 	}
 }
 
 void	keycode_down(t_map *map, int old_p_y)
 {
-	if (map->total_map[map->p_y_grid + 1][map->p_x_grid] == '0')
+	if (map->total_map[(map->p_y + 11) / 64][map->p_x / 64] != '1')
 	{
 		old_p_y = map->p_y / 64;
-		if ((map->p_y + 11) / 64 <= map->max_y)
-			map->p_y += 11;
+		map->p_y += 11;
 		map->total_map[old_p_y][map->p_x / 64] = '0';
-		map->total_map[map->p_y / 64][map->p_x / 64] = 'P';
+		map->total_map[map->p_y / 64][map->p_x / 64] = 'M';
 	}
 }
 
 void	keycode_left(t_map *map, int old_p_x)
 {
-	if (map->total_map[map->p_y_grid][map->p_x_grid - 1] == '0')
+	if (map->total_map[map->p_y / 64][(map->p_x - 11) / 64] != '1')
 	{
 		old_p_x = map->p_x / 64;
-		if ((map->p_x - 11) / 64 >= 0)
-			map->p_x -= 11;
+		map->p_x -= 11;
 		map->total_map[map->p_y / 64][old_p_x] = '0';
-		map->total_map[map->p_y / 64][map->p_x / 64] = 'P';
+		map->total_map[map->p_y / 64][map->p_x / 64] = 'M';
 	}
 }
 
 void	keycode_right(t_map *map, int old_p_x)
 {
-	if (map->total_map[map->p_y_grid][map->p_x_grid + 1] == '0')
+	if (map->total_map[map->p_y / 64][(map->p_x + 11) / 64] != '1')
 	{
 		old_p_x = map->p_x / 64;
-		if ((map->p_x + 11) / 64 < map->max_x)
-			map->p_x += 11;
+		map->p_x += 11;
 		map->total_map[map->p_y / 64][old_p_x] = '0';
-		map->total_map[map->p_y / 64][map->p_x / 64] = 'P';
+		map->total_map[map->p_y / 64][map->p_x / 64] = 'M';
 	}
 }
 
 void	keycode_rotate_left(t_map *map)
 {
 	map->p_angle -= 10; 
+	if (map->p_angle - 10 < 0)
+		map->p_angle += 360;
 }
-
 void	keycode_rotate_right(t_map *map)
 {
 	map->p_angle += 10; 
+	if (map->p_angle + 10 >= 360)
+		map->p_angle -= 360;
 }

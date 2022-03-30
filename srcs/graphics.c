@@ -90,10 +90,10 @@ void	print(t_map *map)
 	i = 0;
 	while (swap <= 60) // alias x
 	{
-	//	printf("\n Tour %d\n", i);
-	//	printf("vertical\n");
+		//printf("\n Tour %d\n", i);
+		//printf("vertical\n");
 		proto_vertical_ray_casting(map, angle);
-	//	printf("horizontal\n");
+		//printf("horizontal\n");
 		proto_horizontal_ray_casting(map, angle);
 		print_rays(map, angle_inc, i++); // 2d : angle | rc : angle_inc
 		swap += map->ang_btween_rays;

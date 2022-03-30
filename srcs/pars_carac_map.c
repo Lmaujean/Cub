@@ -106,7 +106,7 @@ void	ft_check_carac_map(t_map *game)
 			exit(EXIT_FAILURE);
 		}
 	}
-	game->max_x = size;
-	printf("max y == %d\n", game->max_y);
+	game->max_y = game->max_y - 1;
+	game->max_x = size - 1;
 	ft_check_nbr_carac(game);
 }
