@@ -15,14 +15,19 @@
 
 # include "struct.h"
 # include "keycode_qwerty.h"
+# define WALL_NORD game->text.no
+# define WALL_SUD game->text.so
+# define WALL_EST game->text.ea
+# define WALL_WEST game->text.we
+# define NBR_IMG 5
 
 int		main(int argc, char **argv);
 int		cast_img(t_map map);
 int		keycode_management(int keycode, t_map *map);
-void	keycode_up(t_map *map, int old_P_y);
-void	keycode_down(t_map *map, int old_P_y);
-void	keycode_left(t_map *map, int old_P_x);
-void	keycode_right(t_map *map, int old_P_x);
+void	keycode_up(t_map *map, int old_P_y, float pdx, float pdy);
+void	keycode_down(t_map *map, int old_P_y, float pdx, float pdy);
+void	keycode_left(t_map *map, int old_P_y, float pdx, float pdy);
+void	keycode_right(t_map *map, int old_P_y, float pdx, float pdy);
 void	keycode_rotate_left(t_map *map);
 void	keycode_rotate_right(t_map *map);
 void	keycode_esc(t_map *map);

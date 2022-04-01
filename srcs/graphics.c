@@ -17,14 +17,14 @@
 
 int	color(t_map *map, int x, int y)
 {
-	if (map->total_map[y][x] == '0')
+	if (map->total_map[y][x])
 		return (0x4B2CAB1);
-	else if (map->total_map[y][x] == '1')
+/*	else if (map->total_map[y][x] == '1')
 		return (0x00000ABA);
 	else if (map->total_map[y][x] == ' ')
-		return (0x00FFFFFF);
+		return (0x00FFFFFF);*/
 	else
-		return (0x0000BFF0);
+		return (0);
 }
 
 void	pixel(t_map *map, int x, int y, int color)
@@ -61,19 +61,19 @@ void	tiles(t_map *map, int x, int y)
 
 void	print(t_map *map)
 {
-//	int	x;
-//	int	y;
+	int	x;
+	int	y;
 	int	i;
 	float	angle;
 	float	swap;
-	float	angle_inc;
+//	float	angle_inc;
 
 	mlx_clear_window(map->vars.mlx, map->vars.win);
 	map->img.img = mlx_new_image(map->vars.mlx, map->win_w, map->win_h);
 	map->img.addr = mlx_get_data_addr(map->img.img,
 			&map->img.bits_per_pixel, &map->img.line_length,
 			&map->img.endian);
-/*	x = 0;
+	x = 0;
 	while (x <= map->max_x)
 	{
 		y = 0;
@@ -83,10 +83,10 @@ void	print(t_map *map)
 			y++;
 		}
 		x++;
-	}*/
+	}
 	angle = map->p_angle - 30;
 	swap = map->ang_btween_rays;
-	angle_inc = -30;
+//	angle_inc = -30;
 	i = 0;
 	while (swap <= 60) // alias x
 	{
@@ -95,10 +95,10 @@ void	print(t_map *map)
 		proto_vertical_ray_casting(map, angle);
 		//printf("horizontal\n");
 		proto_horizontal_ray_casting(map, angle);
-		print_rays(map, angle_inc, i++); // 2d : angle | rc : angle_inc
+		print_rays(map, map->p_angle - angle, i++); // 2d : angle | rc : angle_inc
 		swap += map->ang_btween_rays;
 		angle += map->ang_btween_rays;
-		angle_inc += map->ang_btween_rays;
+//		angle_inc += map->ang_btween_rays;
 	}
 	print_map(map);
 	mlx_put_image_to_window(map->vars.mlx, map->vars.win, map->img.img, 0, 0);

@@ -85,7 +85,6 @@ char	**ft_get_map(int fd, const char *str, t_map *game, int i)
 	game->total_map[i++] = ft_strdup(line);
 	free(line);
 	game->total_map[i] = NULL;
-	print_doublechar(game->total_map);
 	return (game->total_map);
 }
 

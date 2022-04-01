@@ -19,24 +19,28 @@ int	keycode_management(int keycode, t_map *map)
 {
 	int	old_p_y;
 	int	old_p_x;
+	float	pdx;
+	float	pdy;
 
 	old_p_y = 0;
 	old_p_x = 0;
+	pdx = cos(map->p_angle * (M_PI / 180));
+	pdy = -sin(map->p_angle * (M_PI / 180));
 	if (keycode == UP || keycode == DOWN
 		|| keycode == LEFT || keycode == LEFT_ARROW
 		|| keycode == RIGHT || keycode == RIGHT_ARROW
 		|| keycode == ESC)
 	{
 		if (keycode == UP)
-			keycode_up(map, old_p_y);
+			keycode_up(map, old_p_y, pdx, pdy);
 		if (keycode == DOWN)
-			keycode_down(map, old_p_y);
+			keycode_down(map, old_p_y, pdx, pdy);
 		if (keycode == LEFT)
-			keycode_left(map, old_p_x);
+			keycode_left(map, old_p_x, pdx, pdy);
 		if (keycode == LEFT_ARROW)
 			keycode_rotate_left(map);
 		if (keycode == RIGHT)
-			keycode_right(map, old_p_x);
+			keycode_right(map, old_p_x, pdx, pdy);
 		if (keycode == RIGHT_ARROW)
 			keycode_rotate_right(map);
 		if (keycode == ESC)

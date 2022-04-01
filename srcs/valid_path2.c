@@ -61,6 +61,11 @@ void	valid_path_texture(char *str, t_map *game)
 {
 	int	fd;
 
+	if (!ft_check_ext(str, ".xpm"))
+	{
+		printf("Error\nFile Not .xpm\n");
+		exit(EXIT_FAILURE);
+	}
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 	{
